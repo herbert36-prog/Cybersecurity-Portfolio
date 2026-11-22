@@ -54,6 +54,29 @@ The activity was consistent with potential automated password guessing.
 - Security dashboard creation.
 - Technical documentation.
 
+## Investigation Screenshots
+
+### Data Ingestion
+![Splunk Data Ingestion](screenshots/01-splunk-data-ingestion.png)
+
+### Failed Login Investigation
+![Failed Login Investigation](screenshots/02-failed-login-investigation.png)
+
+### Suspicious IP Analysis
+![Suspicious IP Analysis](screenshots/03-suspicious-ip-analysis.png)
+
+### Targeted Accounts
+![Targeted Accounts](screenshots/04-targeted-accounts.png)
+
+### Login Attack Timeline
+![Login Attack Timeline](screenshots/05-login-attack-timeline.png)
+
+### Failed Logins by Source IP
+![Failed Logins by IP](screenshots/06-failed-logins-by-ip.png)
+
+### SOC Monitoring Dashboard
+![SOC Dashboard](screenshots/07-soc-dashboard.png)
+
 ## Disclaimer
 
 This project uses synthetic authentication logs created for educational purposes. No real attacks or unauthorised access took place.
