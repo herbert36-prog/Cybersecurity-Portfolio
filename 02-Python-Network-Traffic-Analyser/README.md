@@ -180,6 +180,19 @@ Video demonstrations of the application will be added here.
 - Troubleshooting and debugging.
 - Technical documentation.
 
+  ### Testing Environment
+
+I tested the application using my own personal devices:
+
+- Mobile phone.
+- ASUS laptop.
+- Sony headphones.
+- Personal Wi-Fi network.
+
+I generated network activity by browsing websites on my mobile phone and ASUS laptop while running the packet capture application.
+
+I also included my Sony headphones as part of the devices in my testing environment, allowing me to consider the wider range of connected consumer devices found in everyday environments.
+
 ## Conclusion
 
 This project gave me practical experience developing a Python-based network traffic analysis application.
