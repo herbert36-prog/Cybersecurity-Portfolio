@@ -1,0 +1,30 @@
+
+# Splunk SOC Investigation - SPL Queries
+# Project: Brute-Force Login Investigation
+
+# 1. Search all authentication events
+index=soc_lab
+
+# 2. Identify failed login attempts
+index=soc_lab action="failed"
+
+# 3. Count failed logins by source IP
+index=soc_lab action="failed"
+| stats count by src_ip
+| sort - count
+
+# 4. Identify targeted usernames from suspicious IP
+index=soc_lab action="failed" src_ip="203.0.113.45"
+| stats count by username
+| sort - count
+
+# 5. Analyse suspicious login activity over time
+index=soc_lab action="failed" src_ip="203.0.113.45"
+| eval _time=strptime(event_time,"%Y-%m-%d %H:%M:%S")
+| where isnotnull(_time)
+| timechart span=1m count
+| where count > 0
+
+# 6. Count total failed login attempts
+index=soc_lab action="failed"
+| stats count AS "Failed Login Attempts"
