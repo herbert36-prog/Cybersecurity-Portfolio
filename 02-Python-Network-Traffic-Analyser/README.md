@@ -189,3 +189,11 @@ It allowed me to combine programming, networking and data visualisation to creat
 Through the development process, I gained experience working with packet capture libraries, processing network data and building an interactive dashboard.
 
 The project also developed my understanding of how network traffic analysis can contribute to cybersecurity monitoring and the importance of presenting technical information in an accessible way.
+
+## Video Demonstrations
+
+The following videos demonstrate the Python Network Traffic Analysis Tool.
+
+- **Demo 1:** [Watch Demo 1](https://www.youtube.com/watch?v=buFGn4FQDP0)
+- **Demo 2:** [Watch Demo 2](https://youtu.be/wmuzJgJBdY8)
+- **Demo 3:** [Watch Demo 3](https://youtu.be/zLSs6PzbTI4)
