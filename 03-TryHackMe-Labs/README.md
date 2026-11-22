@@ -13,6 +13,7 @@ Each write-up documents the purpose of the room, the concepts covered, the pract
 ### SOC L1 Alert Triage
 
 **Platform:** TryHackMe
+**Detailed Write-up:** [Read SOC L1 Alert Triage](SOC-L1-Alert-Triage.md)
 
 **Room:** [SOC L1 Alert Triage](https://tryhackme.com/room/socl1alerttriage)
 
