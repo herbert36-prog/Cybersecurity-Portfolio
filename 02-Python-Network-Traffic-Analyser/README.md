@@ -190,6 +190,82 @@ Through the development process, I gained experience working with packet capture
 
 The project also developed my understanding of how network traffic analysis can contribute to cybersecurity monitoring and the importance of presenting technical information in an accessible way.
 
+## Technical Challenges and Problem-Solving
+
+One of the biggest challenges during this project was deciding how to approach the development of the network traffic analysis tool.
+
+The research, planning and technical decision-making took approximately four months. During this period, I carried out independent research and discussed different approaches with my university supervisor before settling on the final implementation.
+
+### Choosing the Right Programming Language
+
+Initially, I needed to research which programming language would be most suitable for developing the application.
+
+I considered the requirements of the project, particularly live packet capture, processing network data and presenting information through a visual dashboard.
+
+After researching the available options, I decided to use Python. This allowed me to work with libraries such as PyShark, Pandas, Streamlit and Plotly within one application.
+
+### Choosing Between PyShark and Python Sockets
+
+Another important decision was how to capture network packets.
+
+I researched two possible approaches:
+
+- **PyShark:** A Python library that provides access to packet capture and analysis through Wireshark's TShark engine.
+- **Python Sockets:** A lower-level approach that provides access to network communication and can be used to build packet-handling functionality.
+
+I had to consider which approach was more appropriate for the requirements of my project.
+
+I ultimately used PyShark because it provided an existing packet capture and analysis framework that I could integrate into my Python application.
+
+This research helped me understand that different technologies can achieve similar objectives but offer different levels of functionality and complexity.
+
+### Configuring Live Packet Capture
+
+Getting PyShark working correctly was another challenge.
+
+The application required the correct configuration of Wireshark/TShark and the Python environment. I also encountered issues relating to Python's asynchronous event loop when implementing live packet capture.
+
+I had to investigate how the capture process worked, troubleshoot the configuration and make adjustments to get the packet capture functionality working.
+
+This helped me develop my understanding of packet capture tools, Python libraries and troubleshooting.
+
+### Data Privacy and Ethical Considerations
+
+An important consideration throughout the project was making sure that network monitoring was carried out responsibly.
+
+Network packets can contain sensitive information, particularly when monitoring devices used by other people.
+
+I therefore had to consider what information the application actually needed to collect and how to avoid unnecessarily collecting personal information.
+
+My project plan specified that testing would take place within my own local network using my own mobile phone and IoT devices. It also specified that the analysis would focus on packet metadata rather than collecting personal data.
+
+The intended metadata included information such as source and destination IP addresses, protocol types, timestamps and packet sizes.
+
+The implemented prototype currently stores timestamps, protocol information and packet lengths.
+
+This experience helped me understand that developing a network monitoring tool involves more than making the technology work. It also requires considering privacy, responsible data collection and the potential impact of monitoring network activity.
+
+### Working with My Supervisor
+
+Throughout the planning and development process, I discussed the project with my university supervisor.
+
+These discussions helped me consider different technical approaches, review my decisions and develop a clearer understanding of what was achievable within the project.
+
+It also taught me the importance of researching a problem before committing to a particular technical solution.
+
+## Personal Reflection
+
+I spent approximately four months researching, planning and working through the technical decisions involved in this project.
+
+At times, I found the process challenging because I was learning about unfamiliar technologies and had to decide which tools would be most appropriate for my application.
+
+I particularly remember having to research the differences between PyShark and Python sockets before deciding how to approach packet capture. I also had to work through configuration issues when getting live packet capture working.
+
+One of the things I took away from this project was the importance of not rushing into development. Spending time researching, discussing ideas with my supervisor and understanding the requirements helped me make more informed decisions.
+
+I also became more aware of the privacy responsibilities involved in network monitoring. Before this project, I was mainly interested in understanding how devices communicate. During development, I realised that analysing network traffic also requires careful consideration of what information is collected and how it is handled.
+
+Overall, this project improved my confidence in researching technical problems, comparing technologies and troubleshooting unfamiliar software. It also strengthened my interest in networking and cybersecurity, particularly understanding how network traffic can be used to monitor and investigate device behaviour.
 ## Video Demonstrations
 
 The following videos demonstrate the Python Network Traffic Analysis Tool.
