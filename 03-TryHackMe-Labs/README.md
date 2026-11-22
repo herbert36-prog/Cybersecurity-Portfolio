@@ -31,3 +31,13 @@ The practical experience helped develop my understanding of security alert inves
 - Understanding SOC team responsibilities.
 
 A detailed write-up of this room will be included in this repository.
+
+### Logs Fundamentals
+
+**Platform:** TryHackMe
+
+**Status:** Completed
+
+**Key skills:** Windows Event Logs, Event IDs, Linux log analysis, grep and cat.
+
+**Detailed Write-up:** [Read Logs Fundamentals](Logs-Fundamentals.md)
