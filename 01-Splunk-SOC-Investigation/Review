@@ -1,0 +1,149 @@
+## Investigation Analysis and Personal Reflection
+
+### Understanding the Investigation
+
+The purpose of this project was to investigate authentication logs using Splunk Cloud Platform and identify potentially suspicious login activity. I approached the task as a basic Security Operations Centre (SOC) investigation, where the objective was to examine security events, recognise unusual patterns and determine whether further investigation was required.
+
+I used a synthetic dataset containing 25 authentication events. Each event included information such as the timestamp, source IP address, username, authentication result and host.
+
+I began by uploading the dataset into a dedicated Splunk index called `soc_lab`. I then used Search Processing Language (SPL) to filter the events and examine failed authentication attempts.
+
+### Analysis of the Findings
+
+**Overall authentication activity**
+
+The dataset contained:
+
+- 25 total authentication events.
+- 18 failed login attempts.
+- 7 successful login attempts.
+
+This meant that 72% of the recorded authentication attempts had failed.
+
+A high number of failed logins can be a warning sign because it may indicate repeated password guessing, incorrect credentials or other suspicious authentication behaviour. However, failed logins alone do not prove that an attack has taken place.
+
+**Identifying the suspicious source IP**
+
+One of the most important findings was the source IP address `203.0.113.45`.
+
+This address was responsible for 16 of the 18 failed login attempts, representing approximately 88.9% of all failed logins in the dataset.
+
+This stood out because the majority of failed authentication activity came from one source rather than being spread across multiple addresses.
+
+As a SOC analyst, I would consider this a potentially suspicious pattern that requires further investigation.
+
+**Investigating targeted accounts**
+
+I then examined which usernames were targeted by the suspicious IP address.
+
+| Username | Failed attempts |
+|---|---:|
+| admin | 8 |
+| administrator | 3 |
+| root | 3 |
+| guest | 2 |
+
+The activity targeted several common administrative and default-style usernames.
+
+This could be consistent with password guessing, where an attacker attempts to gain access by trying commonly used account names and passwords.
+
+It is important to recognise that this evidence does not establish whether any of the accounts were compromised. It only demonstrates repeated failed authentication attempts against those usernames.
+
+**Examining the attack timeline**
+
+I also investigated when the failed login attempts occurred.
+
+The activity from `203.0.113.45` was recorded across several short periods:
+
+| Time | Failed attempts |
+|---|---:|
+| 09:05 | 5 |
+| 09:06 | 3 |
+| 09:10 | 3 |
+| 09:13 | 3 |
+| 09:20 | 2 |
+
+The repeated attempts within short periods made the activity worth investigating further.
+
+I used SPL's `strptime()` function to convert the timestamp field into a format that Splunk could use for time-based analysis. I then used `timechart` to visualise the failed login activity over time.
+
+This was an important part of the investigation because it allowed me to look beyond the total number of failed attempts and understand how the activity was distributed.
+
+### My Assessment
+
+Based on the available evidence, I would classify this activity as **suspicious authentication behaviour consistent with a potential brute-force or password-guessing attempt**.
+
+The main reasons are:
+
+- A single source IP generated most of the failed login attempts.
+- Multiple usernames were targeted.
+- Several attempts occurred close together in time.
+- The targeted usernames included common administrative account names.
+
+However, I would not conclude that a successful compromise had occurred. The dataset does not provide enough evidence to establish that.
+
+In a real SOC environment, I would continue investigating the seven successful login events, particularly any successful authentication associated with the suspicious source IP. I would also check whether there were unusual activities after authentication, such as unexpected account changes, privilege escalation or access to sensitive systems.
+
+### Recommended Security Actions
+
+If this activity appeared in a real organisation, I would recommend:
+
+1. **Investigate the source IP:** Review additional logs and determine whether the address has generated other suspicious activity.
+2. **Review successful logins:** Establish whether any successful authentication attempts followed the repeated failures.
+3. **Check affected accounts:** Review the targeted accounts for unusual activity and confirm that default or unnecessary accounts are disabled.
+4. **Review authentication protections:** Check whether multi-factor authentication, account lockout policies and rate limiting are configured appropriately.
+5. **Escalate where necessary:** If further evidence suggests an account has been compromised, escalate the incident according to the organisation's incident response process.
+
+These actions would help establish whether the activity was an unsuccessful password-guessing attempt or part of a wider security incident.
+
+### What I Learned
+
+This project helped me understand how a SIEM platform such as Splunk can be used to investigate authentication activity.
+
+Before completing the investigation, I understood the general concept of brute-force attacks, but this project gave me the opportunity to apply that knowledge to actual log-analysis tasks within a SIEM environment.
+
+I gained practical experience in:
+
+- Uploading and managing log data in Splunk Cloud.
+- Searching and filtering authentication events using SPL.
+- Identifying suspicious source IP addresses.
+- Investigating targeted usernames.
+- Analysing authentication activity over time.
+- Creating a monitoring dashboard.
+- Documenting findings and suggesting appropriate security actions.
+
+One particularly useful learning experience was working with timestamps. I initially needed to convert the dataset's `event_time` field before Splunk could display the activity correctly in a timeline. This helped me understand that log data sometimes needs additional processing before it can be analysed effectively.
+
+I also learned that identifying suspicious activity is only one part of a security investigation. An analyst must interpret the evidence carefully, avoid making unsupported conclusions and consider what additional information is needed.
+
+### Personal Reflection
+
+I found this project a valuable opportunity to gain practical experience with a SIEM platform rather than only learning about security monitoring in theory.
+
+I particularly enjoyed investigating the failed login activity and gradually building a clearer picture of what was happening. Seeing the results develop from individual log events into statistics, a timeline and a dashboard made the investigation feel more meaningful.
+
+One of the challenges was learning how to work with SPL and understanding how Splunk processes and displays imported data. I also had to troubleshoot the timestamp field to produce a useful timeline.
+
+Completing these tasks gave me more confidence in approaching log analysis and investigating suspicious authentication behaviour. It also made me more interested in the work carried out by SOC analysts, particularly identifying patterns, investigating alerts and deciding what action should be taken based on the available evidence.
+
+**Time taken:** [Add the approximate total time spent completing the project.]
+
+**My personal experience:** [Add a few sentences describing how you genuinely felt while completing the project, what you found most difficult and what you enjoyed most.]
+
+### Project Limitations
+
+This investigation used a synthetic dataset created for educational purposes. It was not connected to a live organisation or production environment.
+
+The dataset was relatively small and contained limited authentication information. Therefore, the investigation demonstrates the process of analysing suspicious login behaviour rather than proving that a real cyberattack or account compromise occurred.
+
+Further work could include investigating Windows authentication logs, correlating events from multiple sources, creating automated detection alerts and investigating additional indicators of compromise.
+
+### Conclusion
+
+This project gave me practical experience using Splunk Cloud as a SIEM platform and following a basic SOC investigation process.
+
+I was able to identify suspicious authentication patterns, investigate the source IP and targeted accounts, analyse the timeline of events and present my findings in a monitoring dashboard and incident report.
+
+Most importantly, I learned to interpret security logs, explain why activity may be suspicious and recognise the importance of gathering further evidence before reaching a conclusion.
+
+These are skills I would like to continue developing as I work towards an entry-level cybersecurity role.
